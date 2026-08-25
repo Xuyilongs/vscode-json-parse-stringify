@@ -33,6 +33,20 @@
         "category": "JSON"
       }
     ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "extension.parseJson",
+          "when": "editorHasSelection",
+          "group": "1_modification@10"
+        },
+        {
+          "command": "extension.stringifyJson",
+          "when": "editorHasSelection",
+          "group": "1_modification@11"
+        }
+      ]
+    },
     "configuration": {
       "type": "string",
       "title": "json-parse-stringify configuration",
@@ -50,7 +64,7 @@
   "devDependencies": {
     "@types/copy-paste": "^1.1.30",
     "@types/mocha": "^2.2.42",
-    "@types/node": "^7.0.43",
+    "@types/node": "7.0.43",
     "tslint": "^5.8.0",
     "typescript": "^2.6.1",
     "vsce": "^1.37.1",
