@@ -31,24 +31,35 @@ export function replaceSelectedWithStringified() {
 }
 
 export function parseJsonString(value: string) {
-  let obj: string = '';
-  if (typeof value === 'string') {
-    eval(`obj = ${value}`);
+  const normalized = unwrapSingleQuotedJson(value.trim());
+  const parsed = JSON.parse(normalized);
+
+  if (typeof parsed === 'string') {
     try {
-      return JSON.parse(obj);
-    } catch (ex) {}
+      return JSON.parse(parsed);
+    } catch (ex) {
+      return parsed;
+    }
   }
-  return JSON.parse(value);
+
+  return parsed;
 }
 
 export function stringifyJsonString(value: string) {
   let obj;
   try {
-    eval(`obj = ${value}`);
+    obj = JSON.parse(value);
   } catch (ex) {
-    eval(`obj = "${value}"`);
+    obj = value;
   }
   return JSON.stringify(JSON.stringify(obj));
+}
+
+function unwrapSingleQuotedJson(value: string) {
+  if (value.length >= 2 && value[0] === "'" && value[value.length - 1] === "'") {
+    return value.slice(1, -1);
+  }
+  return value;
 }
 
 function getSelectedText(editor = vscode.window.activeTextEditor) {

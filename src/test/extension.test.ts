@@ -43,8 +43,16 @@ suite('JSON Operations', () => {
       '"\\"this is a test\\""'
     );
     assert.equal(
-      stringifyJsonString(`{ this: 'is a test' }`),
+      stringifyJsonString(`{ "this": "is a test" }`),
       '"{\\"this\\":\\"is a test\\"}"'
+    );
+  });
+
+  test('does not execute selected JavaScript', () => {
+    assert.throws(() => parseJsonString('(() => "unsafe")()'));
+    assert.equal(
+      stringifyJsonString('process.exit()'),
+      '"\\"process.exit()\\""'
     );
   });
 });
