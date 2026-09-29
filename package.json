@@ -2,7 +2,7 @@
   "name": "json-parse-stringify",
   "displayName": "JSON Parse & Stringify - Context Menu",
   "description": "Parse or stringify selected JSON directly from the editor context menu",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "publisher": "xuyilongs",
   "icon": "icon.png",
   "engines": {
@@ -42,12 +42,12 @@
         {
           "command": "extension.parseJson",
           "when": "editorHasSelection",
-          "group": "1_modification@10"
+          "group": "2_json_parse_stringify@10"
         },
         {
           "command": "extension.stringifyJson",
           "when": "editorHasSelection",
-          "group": "1_modification@11"
+          "group": "2_json_parse_stringify@11"
         }
       ]
     },

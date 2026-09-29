@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.1
+
+- Group the JSON Parse and JSON Stringify context-menu commands with separators from other actions.
+
 ## 1.1.0
 
 - Add JSON Parse and JSON Stringify commands to the editor context menu.
