@@ -1,74 +1,58 @@
 {
-  "name": "json-parse-stringify",
-  "displayName": "JSON Parse & Stringify - Context Menu",
-  "description": "Parse or stringify selected JSON directly from the editor context menu",
-  "version": "1.1.1",
+  "name": "json-selection-converter",
+  "displayName": "JSON Selection Converter",
+  "description": "Decode and encode selected JSON text from the editor context menu",
+  "version": "1.0.0",
   "publisher": "xuyilongs",
   "icon": "icon.png",
   "engines": {
     "vscode": "^1.20.0"
   },
   "categories": ["Formatters", "Other"],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Xuyilongs/vscode-json-parse-stringify"
-  },
-  "homepage": "https://github.com/Xuyilongs/vscode-json-parse-stringify#readme",
-  "bugs": {
-    "url": "https://github.com/Xuyilongs/vscode-json-parse-stringify/issues"
-  },
-  "keywords": ["json", "parse", "stringify"],
-  "author": "NextFaze contributors and Xuyilong",
+  "keywords": ["json", "selection", "decode", "encode"],
+  "author": "Xuyilong",
   "activationEvents": [
-    "onCommand:extension.stringifyJson",
-    "onCommand:extension.parseJson"
+    "onCommand:jsonSelectionConverter.decode",
+    "onCommand:jsonSelectionConverter.encode"
   ],
   "main": "./out/extension",
   "contributes": {
     "commands": [
       {
-        "command": "extension.stringifyJson",
-        "title": "Stringify JSON Value",
-        "category": "JSON"
+        "command": "jsonSelectionConverter.decode",
+        "title": "Decode JSON String",
+        "category": "JSON Selection Converter"
       },
       {
-        "command": "extension.parseJson",
-        "title": "Parse Stringified JSON",
-        "category": "JSON"
+        "command": "jsonSelectionConverter.encode",
+        "title": "Encode as JSON String",
+        "category": "JSON Selection Converter"
       }
     ],
     "menus": {
       "editor/context": [
         {
-          "command": "extension.parseJson",
+          "command": "jsonSelectionConverter.decode",
           "when": "editorHasSelection",
-          "group": "2_json_parse_stringify@10"
+          "group": "2_json_selection_converter@10"
         },
         {
-          "command": "extension.stringifyJson",
+          "command": "jsonSelectionConverter.encode",
           "when": "editorHasSelection",
-          "group": "2_json_parse_stringify@11"
+          "group": "2_json_selection_converter@11"
         }
       ]
-    },
-    "configuration": {
-      "type": "string",
-      "title": "json-parse-stringify configuration",
-      "properties": {}
     }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
-    "postinstall": "node ./node_modules/vscode/bin/install",
-    "test": "npm run compile && node ./node_modules/vscode/bin/test",
+    "test": "npm run compile && node ./out/test/selectionConverter.test.js",
     "package": "vsce package"
   },
   "devDependencies": {
-    "@types/mocha": "^2.2.42",
     "@types/node": "7.0.43",
-    "tslint": "^5.8.0",
     "typescript": "^2.6.1",
     "vsce": "^1.37.1",
     "vscode": "^1.1.6"

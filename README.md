@@ -1,25 +1,14 @@
-# JSON Parse & Stringify - Context Menu
+# JSON Selection Converter
 
-Parse or stringify selected JSON without leaving the editor.
+Convert selected text directly in the VS Code editor.
 
-## Features
+## Commands
 
-- Select a stringified JSON value, right-click, and choose **JSON: Parse Stringified JSON**.
-- Select JSON or plain text, right-click, and choose **JSON: Stringify JSON Value**.
-- The original Command Palette commands remain available.
+- **Decode JSON String** parses a JSON value. If the result is another JSON string, it decodes that inner value too. For example, select `"{\"item\":1}"` to get `{"item":1}`.
+- **Encode as JSON String** turns selected JSON or plain text into an escaped JSON string literal. For example, select `{"item":1}` to get `"{\"item\":1}"`.
 
-## Usage
-
-1. Select the content you want to convert.
-2. Right-click inside the selection.
-3. Choose the parse or stringify command from the **JSON** category.
+Select text and use the editor context menu or Command Palette. Invalid JSON is left unchanged.
 
 ## 中文说明
 
-选中编辑器中的 JSON 内容后，通过右键菜单直接执行 JSON Parse 或 JSON Stringify；原有命令面板入口保持可用。
-
-## Attribution
-
-This extension is maintained by Xuyilong and is based on the original
-[NextFaze/vscode-json-parse-stringify](https://github.com/NextFaze/vscode-json-parse-stringify)
-project. Original authorship is preserved in the Git history.
+在编辑器中选中文本后，可以通过右键菜单或命令面板解码 JSON 字符串、将 JSON 或普通文本编码为 JSON 字符串。当前扩展代码与图标由 Xuyilong 独立实现和绘制。

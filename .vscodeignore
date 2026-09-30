@@ -1,6 +1,10 @@
 .vscode/**
+.github/**
 .vscode-test/**
+node_modules/**
+scripts/**
 out/test/**
+out/lib/**
 out/**/*.map
 src/**
 .gitignore
